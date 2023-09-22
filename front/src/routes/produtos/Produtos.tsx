@@ -1,20 +1,46 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import ProdutoService from "./ProdutoService";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { useState, useEffect, ReactNode } from "react";
+import ProdutoService, { IProduto } from "./ProdutoService";
+import React from "react";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 
 
 const Produtos = () => {
   const service = ProdutoService();
-  const [produtos, setProdutos] = useState<Array<string>>();
+  const [produtos, setProdutos] = useState<Array<IProduto>>();
 
   const listarProdutos = () => {
     service.getProdutos()
-      .then(s => {
-        setProdutos(s.data)
-        console.log(s.data)
-      })
+      .then(s => setProdutos(s))
+  };
+
+  const TabelaDeProdutos = () => {
+    return <>
+      <div>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{color:'white'}}>Produto: </TableCell>
+              <TableCell sx={{color:'white'}}>Número do produto: </TableCell>
+              <TableCell sx={{color:'white'}}>Preço: </TableCell>
+            </TableRow>
+          </TableHead>
+          {produtos?.map((produto) => (
+            <TableRow
+              key={produto.identificacao}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+
+                <TableCell component="th" scope="produto">{produto.identificacao}</TableCell>
+                <TableCell align="center" sx={{height:'100px'}}>{produto.numero}</TableCell>
+                <TableCell align="center">{produto.preco}</TableCell>
+            </TableRow>
+          ))}
+          <TableBody>
+
+          </TableBody>
+        </Table>
+      </div>
+    </>
   }
 
   useEffect(() => {
@@ -22,7 +48,9 @@ const Produtos = () => {
   }, [])
 
   return (
-    <div>Products</div>
+    <div>
+      Products: <ul>{TabelaDeProdutos()}</ul>
+    </div>
   )
 }
 
