@@ -8,9 +8,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Home from './routes/Home.tsx';
-import Produtos from './routes/produtos/Produtos.tsx';
-import ErrorPage from './routes/ErrorPage.tsx';
+import Home from './pages/Home.tsx';
+import Produtos from './pages/produtos/Produtos.tsx';
+import ErrorPage from './pages/ErrorPage.tsx';
 
 const router = createBrowserRouter([
   {

@@ -1,13 +1,13 @@
-import axios, { AxiosResponse } from "axios"
-import { ReactNode, SetStateAction } from "react";
+import axios from "axios";
+import { SetStateAction } from "react";
 
 export type IProduto = {
     id: number,
     uuid: string,
     numero: number,
-    identificacao: string,
+    nome: string,
     preco: number,
-  }
+}
 
 const ProdutoService = () => {
     const path = "http://localhost:8080/api/v0/produto"
