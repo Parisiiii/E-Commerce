@@ -8,16 +8,16 @@ import java.util.UUID;
 public class Entidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, length = 10)
     private Long id;
-    @Column(nullable = false, updatable = false, columnDefinition = "CHAR(36)")
-    private UUID uuid;
+    @Column(nullable = false, updatable = false, columnDefinition = "VARCHAR(36)")
+    private String uuid;
 
     public Long getId() {
         return id;
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
@@ -25,7 +25,7 @@ public class Entidade {
         this.id = id;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 }

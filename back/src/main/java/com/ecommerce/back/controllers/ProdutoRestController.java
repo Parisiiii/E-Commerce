@@ -18,6 +18,7 @@ public class ProdutoRestController {
 
     @PostMapping("/salvar")
     public void salvar(@RequestBody Produto produto){
+        produto.setUuid(UUID.randomUUID().toString());
         service.salvar(produto);
     }
 
