@@ -2,15 +2,15 @@
 E-Commerce project made by Lucas Parisi.
 
 # Technologies
-Backend: Java + Spring framework (Spring boot and security) + MariaDB
-Frontend: React + Typescript
+- Backend: Java + Spring framework (Spring boot and security) + MariaDB
+- Frontend: React + Typescript
 
 
 # RUN THE PROJECT
-To run this project, you will install:
-    -Java 17
-    -MariaDB
-    -Node and Node Package Manager
+- To run this project, you will install:
+    - Java 17
+    - MariaDB
+    - Node and Node Package Manager
 
 After you install all the resources
 
