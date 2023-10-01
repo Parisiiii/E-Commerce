@@ -7,6 +7,7 @@ export type IProduto = {
     numero: number,
     nome: string,
     preco: number,
+    imagemProduto: string;
 }
 
 const ProdutoService = () => {
