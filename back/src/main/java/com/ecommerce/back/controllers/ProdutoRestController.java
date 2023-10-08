@@ -22,22 +22,24 @@ public class ProdutoRestController {
         service.salvar(produto);
     }
 
-    @GetMapping("/procurarPorUUID/{uuid}")
-    public ResponseEntity<Produto> procurarPorUUID(@PathVariable String uuid){
-        Produto body = service.procurarPorUUID(uuid);
-        return ResponseEntity.ok(body);
+    @GetMapping("/{nome}")
+    public ResponseEntity<List<Produto>> procurarPorNome(@PathVariable String nome){
+        if(nome.equals(" ")) {
+            return ResponseEntity.ok(service.listar());
+        }else {
+            return ResponseEntity.ok(service.procurarPorNome(nome));
+        }
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<Produto>> listar(){
+        return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/procurarPorNumero/{numero}")
     public ResponseEntity<Produto> procurarPorNumero(@PathVariable String numero){
         Integer numeroConvertido = Integer.parseInt(numero);
         Produto body = service.procurarPorNumero(numeroConvertido);
-        return ResponseEntity.ok(body);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Produto>> listar(){
-        List<Produto> body = service.listar();
         return ResponseEntity.ok(body);
     }
 

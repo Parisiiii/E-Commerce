@@ -9,6 +9,8 @@ import java.util.UUID;
 public interface ProdutoRepository{
     List<Produto> listar();
     Produto procurarPorUUID(String uuid);
+
+    List<Produto> procurarPorNome(String nome);
     Produto procurarPorNumero(Integer numero);
     void deletar(String uuid);
     void salvar(Produto produto);

@@ -34,6 +34,16 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
     }
 
     @Override
+    public List<Produto> procurarPorNome(String nome){
+        String jpql = "FROM Produto p WHERE p.nome LIKE '%'||:nome||'%'";
+        TypedQuery<Produto> query = manager
+                .createQuery(jpql, Produto.class)
+                .setParameter("nome",nome);
+
+        return query.getResultList();
+    }
+
+    @Override
     public Produto procurarPorNumero(Integer numero) {
         TypedQuery<Produto> query = manager.createQuery("from Produto where numero=:numero", Produto.class)
                 .setParameter("numero",numero);

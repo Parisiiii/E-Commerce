@@ -25,11 +25,10 @@ public class ProdutoService {
         repository.deletar(uuid);
     }
 
-    public Produto procurarPorUUID(String uuid){
-        return repository.procurarPorUUID(uuid);
-    }
-
     public Produto procurarPorNumero(Integer numero){
         return repository.procurarPorNumero(numero);
+    }
+    public List<Produto> procurarPorNome(String nome) {
+        return repository.procurarPorNome(nome);
     }
 }
