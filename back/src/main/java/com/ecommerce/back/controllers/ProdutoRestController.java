@@ -13,12 +13,15 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v0/produto")
 public class ProdutoRestController {
-    @Autowired
-    ProdutoService service;
+    private ProdutoService service;
+
+    public ProdutoRestController(ProdutoService service) {
+        this.service = service;
+    }
 
     @PostMapping("/salvar")
     public void salvar(@RequestBody Produto produto){
-        produto.setUuid(UUID.randomUUID().toString());
+        produto.setId(UUID.randomUUID().toString());
         service.salvar(produto);
     }
 

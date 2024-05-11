@@ -10,8 +10,11 @@ import java.util.UUID;
 
 @Service
 public class ProdutoService {
-    @Autowired
-    ProdutoRepository repository;
+   private ProdutoRepository repository;
+
+    public ProdutoService(ProdutoRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Produto> listar(){
         return repository.listar();

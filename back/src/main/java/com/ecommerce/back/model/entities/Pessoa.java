@@ -2,23 +2,27 @@ package com.ecommerce.back.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table
 public class Pessoa extends Entidade{
     private String nome;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "pessoa_pedido",
             joinColumns = @JoinColumn(name = "pessoa_fk"),
             inverseJoinColumns = @JoinColumn(name = "pedido_fk"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"pessoa_fk", "pedido_fk"}))
     private List<Pedido> pedidos;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "pessoa_endereco",
             joinColumns = @JoinColumn(name = "pessoa_fk"),
             inverseJoinColumns = @JoinColumn(name = "endereco_fk"),
@@ -36,54 +40,6 @@ public class Pessoa extends Entidade{
         this.pedidos = pedidos;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
     public Pessoa() {
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Endereco> getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(List<Endereco> endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Long getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Long saldo) {
-        this.saldo = saldo;
     }
 }
