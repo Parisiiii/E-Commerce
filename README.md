@@ -1,3 +1,5 @@
+NOT FINISHED
+
 # E-Commerce
 E-Commerce project made by Lucas Parisi.
 
